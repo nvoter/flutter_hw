@@ -17,24 +17,28 @@
 
 ### Интерфейс приложения
 #### iOS, светлая тема
-![alt text](./images/image.png)
-![alt text](./images/image-1.png)
-![alt text](./images/image-2.png)
+<img src="./images/image.png" width="200"/>
+<img src="./images/image-1.png" width="200"/>
+<img src="./images/image-2.png" width="200"/>
+
 #### iOS, темная тема
-![alt text](./images/image-3.png)
-![alt text](./images/image-4.png)
-![alt text](./images/image-5.png)
+<img src="./images/image-3.png" width="200"/>
+<img src="./images/image-4.png" width="200"/>
+<img src="./images/image-5.png" width="200"/>
+
 #### android, светлая тема
-![alt text](./images/image-6.png)
-![alt text](./images/image-7.png)
-![alt text](./images/image-8.png)
+<img src="./images/image-6.png" width="200"/>
+<img src="./images/image-7.png" width="200"/>
+<img src="./images/image-8.png" width="200"/>
+
 #### android, темная тема
-![alt text](./images/image-10.png)
-![alt text](./images/image-11.png)
-![alt text](./images/image-12.png)
+<img src="./images/image-10.png" width="200"/>
+<img src="./images/image-11.png" width="200"/>
+<img src="./images/image-12.png" width="200"/>
+
 #### открытые википедии
-![alt text](./images/image-14.png)
-![alt text](./images/image-13.png)
+<img src="./images/image-14.png" width="200"/>
+<img src="./images/image-13.png" width="200"/>
 
 ### apk
 [Ссылка на скачивание](https://drive.google.com/drive/folders/1QYbGxHWY5NUTRWNJuebNRG_URBhL4NA7?hl=ru)
