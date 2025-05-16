@@ -14,27 +14,44 @@
 * Сделана кастомная иконка приложения
 * Реализована автоматическая смена темы приложения в зависимости от настроек устройства
 * При возникновении ошибок во время получения данных о котике, пользователю отображается всплывающее уведомление (напимер, сервер иногда почему-то выдает пустые респонсы, если это произошло, можно просто перезайти в приложение и все снова будет хорошо)
+* При загрузке следующего кота пользователю отображается индикатор загрузки
+* Есть экран, отображающий список лайкнутых котиков с датой лайка
+* При нажатии на сердечко или свайпе карточки вправо на экране лайкнутых котиков, лайк убирается и порода пропадает из списка лайков
+* Реализован поиск по породе на экране лайкнутых котиков, динамически обновляющий список при вводе
+* При нажатии на карточку котика на экране лайков открывается экран с детальным описанием этого котика
 
 ### Интерфейс приложения
 #### iOS, светлая тема
 <img src="./images/image.png" width="200"/>
 <img src="./images/image-1.png" width="200"/>
 <img src="./images/image-2.png" width="200"/>
+<img src="./images/image-19.png" width="200"/>
+<img src="./images/image-20.png" width="200"/>
+<img src="./images/image-21.png" width="200"/>
 
 #### iOS, темная тема
 <img src="./images/image-3.png" width="200"/>
 <img src="./images/image-4.png" width="200"/>
 <img src="./images/image-5.png" width="200"/>
+<img src="./images/image-22.png" width="200"/>
+<img src="./images/image-23.png" width="200"/>
+<img src="./images/image-24.png" width="200"/>
 
 #### android, светлая тема
 <img src="./images/image-6.png" width="200"/>
 <img src="./images/image-7.png" width="200"/>
 <img src="./images/image-8.png" width="200"/>
+<img src="./images/image-15.png" width="200"/>
+<img src="./images/image-16.png" width="200"/>
+<img src="./images/image-26.png" width="200"/>
 
 #### android, темная тема
 <img src="./images/image-10.png" width="200"/>
 <img src="./images/image-11.png" width="200"/>
 <img src="./images/image-12.png" width="200"/>
+<img src="./images/image-17.png" width="200"/>
+<img src="./images/image-18.png" width="200"/>
+<img src="./images/image-25.png" width="200"/>
 
 #### открытые википедии
 <img src="./images/image-14.png" width="200"/>
