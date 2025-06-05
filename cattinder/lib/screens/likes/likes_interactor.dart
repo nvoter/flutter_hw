@@ -1,16 +1,10 @@
 import '../../models/liked_cat.dart';
-import '../../services/likes_service.dart';
+import '../../services/likes_repository.dart';
 
 class LikesInteractor {
-  final LikesService _likesService;
+  final LikesRepository _repo;
+  LikesInteractor(this._repo);
 
-  LikesInteractor(this._likesService);
-
-  List<LikedCat> getLikedCats() {
-    return _likesService.getLikes();
-  }
-
-  void removeLike(LikedCat cat) {
-    _likesService.removeLike(cat);
-  }
+  Future<List<LikedCat>> getLikedCats() async => _repo.watchLikes().first;
+  Future<void> removeLike(LikedCat cat) => _repo.removeLike(cat);
 }

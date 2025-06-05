@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import '../../models/cat.dart';
 import 'home_interactor.dart';
@@ -8,23 +9,24 @@ class HomePresenter with ChangeNotifier implements ValueListenable<Cat?> {
   final HomeView _view;
 
   Cat? _currentCat;
-  final ValueNotifier<int> likesCountNotifier = ValueNotifier<int>(0);
+  final ValueNotifier<int> likesCountNotifier = ValueNotifier(0);
+  late final StreamSubscription<int> _likesSub;
 
-  HomePresenter(this._interactor, this._view);
+  HomePresenter(this._interactor, this._view) {
+    _likesSub = _interactor.watchLikesCount().listen((cnt) {
+      likesCountNotifier.value = cnt;
+      _view.updateLikesCount(cnt);
+    });
+  }
 
   @override
   Cat? get value => _currentCat;
 
-  void _updateLikesCount() {
-    likesCountNotifier.value = _interactor.getLikesCount();
-  }
-
   Future<void> initialize() async {
     try {
       await _interactor.fetchAllBreeds();
-      _updateLikesCount();
     } catch (e) {
-      _view.showError('Failed to initialize: $e');
+      _view.showError('Init error: $e');
     }
     await loadNextCat();
   }
@@ -34,23 +36,22 @@ class HomePresenter with ChangeNotifier implements ValueListenable<Cat?> {
       _currentCat = await _interactor.getNextCat();
       notifyListeners();
     } catch (e) {
-      _view.showError('Failed to load next cat: $e');
+      _view.showError('Failed to load cat: $e');
     }
   }
 
-  void likeCat() {
-    _interactor.addLike(_currentCat!);
-    int likesCount = _interactor.getLikesCount();
-    likesCountNotifier.value = likesCount;
-    _view.updateLikesCount(likesCount);
-    notifyListeners();
+  void likeCat() async {
+    if (_currentCat == null || _currentCat!.id == 'no_cache') return;
+    await _interactor.addLike(_currentCat!);
   }
 
-  void dislikeCat() {
-    notifyListeners();
-  }
+  void dislikeCat() => notifyListeners();
 
-  void navigateToDetail(Cat cat) {
-    _view.navigateToDetail(cat);
+  void navigateToDetail(Cat cat) => _view.navigateToDetail(cat);
+
+  @override
+  void dispose() {
+    _likesSub.cancel();
+    super.dispose();
   }
 }

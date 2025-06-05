@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:hw1/screens/home/components/offline_indicator.dart';
 import '../../models/cat.dart';
 import '../detail/detail_screen.dart';
 import 'components/like_dislike_button.dart';
@@ -50,6 +51,7 @@ class HomeScreenState extends State<HomeScreen>
 
     return Scaffold(
       appBar: AppBar(
+        leading: const OfflineIndicator(),
         title: Text(
           'Cat Tinder',
           style: TextStyle(

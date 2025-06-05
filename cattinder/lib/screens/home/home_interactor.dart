@@ -1,41 +1,57 @@
 import 'dart:math';
 import '../../models/cat.dart';
-import '../../models/liked_cat.dart';
+import '../../models/breed.dart';
 import '../../services/api_service.dart';
-import '../../services/likes_service.dart';
+import '../../services/likes_repository.dart';
+import '../../data/cats_dao.dart';
+import '../../services/connectivity_service.dart';
 
 class HomeInteractor {
-  final ApiService _apiService;
-  final LikesService _likesService;
-  List<String> _breedIds = [];
-  final secureRandomizer = Random.secure();
+  final ApiService _api;
+  final LikesRepository _likesRepo;
+  final CatsDao _dao;
+  final ConnectivityService _connectivity;
 
-  HomeInteractor(this._apiService, this._likesService);
+  List<String> _breedIds = [];
+  final _rnd = Random.secure();
+
+  HomeInteractor(this._api, this._likesRepo, this._dao, this._connectivity);
 
   Future<void> fetchAllBreeds() async {
-    final breeds = await _apiService.getAllBreeds();
-    _breedIds = breeds.map((breed) => breed.id).toList();
-    if (_breedIds.isEmpty) {
-      throw Exception('Failed to fetch breeds');
-    }
+    if (!await _connectivity.isOnline) return;
+    final breeds = await _api.getAllBreeds();
+    _breedIds = breeds.map((e) => e.id).toList();
   }
 
   Future<Cat> getNextCat() async {
-    if (_breedIds.isEmpty) {
-      throw Exception('No breeds available');
+    if (await _connectivity.isOnline && _breedIds.isNotEmpty) {
+      final breedId = _breedIds[_rnd.nextInt(_breedIds.length)];
+      final cat = await _api.getRandomCatByBreed(breedId);
+      await _dao.cacheCat(cat);
+      return cat;
     }
 
-    int index = secureRandomizer.nextInt(_breedIds.length);
-    final breedId = _breedIds[index];
-    return await _apiService.getRandomCatByBreed(breedId);
+    final cached = await _dao.getCachedCats();
+    if (cached.isNotEmpty) {
+      return cached[_rnd.nextInt(cached.length)];
+    }
+
+    return Cat(
+      id: 'no_cache',
+      imageUrl: 'assets/images/placeholder.png',
+      breed: Breed(
+        id: '',
+        name: 'No chached cats',
+        description: 'Connect to network to get cats',
+        temperament: '',
+        origin: '',
+        lifeSpan: '',
+        wikipediaUrl: '',
+        dogFriendly: 0,
+      ),
+    );
   }
 
-  void addLike(Cat cat) {
-    LikedCat likedCat = LikedCat(cat: cat, likeDate: DateTime.now());
-    _likesService.addLike(likedCat);
-  }
-
-  int getLikesCount() {
-    return _likesService.getLikes().length;
-  }
+  Future<void> addLike(Cat cat) => _likesRepo.addLike(cat);
+  Stream<int> watchLikesCount() => _likesRepo.watchLikes().map((l) => l.length);
 }

@@ -18,11 +18,18 @@ dependencies:
   url_launcher: ^6.3.1
   get_it: ^7.2.0
   intl: ^0.20.2
+  connectivity_plus: ^6.1.4
+  drift: ^2.26.1
+  sqlite3_flutter_libs: ^0.5.33
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  drift_dev: ^2.12.0
+  build_runner: ^2.4.8
+  mocktail: ^1.0.4
 
 flutter:
   uses-material-design: true
@@ -34,6 +41,8 @@ flutter:
   assets:
     - assets/icons/icon.png
     - assets/images/placeholder.png
+    - assets/images/no_cached.png
+    - assets/images/offline.png
     - .env
 
 flutter_launcher_icons:

@@ -31,4 +31,15 @@ class Breed {
       dogFriendly: json['dog_friendly'] as int? ?? 0,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'description': description,
+    'temperament': temperament,
+    'origin': origin,
+    'life_span': lifeSpan,
+    'wikipedia_url': wikipediaUrl,
+    'dog_friendly': dogFriendly,
+  };
 }

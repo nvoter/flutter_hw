@@ -19,6 +19,11 @@
 * При нажатии на сердечко или свайпе карточки вправо на экране лайкнутых котиков, лайк убирается и порода пропадает из списка лайков
 * Реализован поиск по породе на экране лайкнутых котиков, динамически обновляющий список при вводе
 * При нажатии на карточку котика на экране лайков открывается экран с детальным описанием этого котика
+* Реализовано кэширование изображений для дальнейшего отображения в режиме offline
+* Реализована работа в режиме оффлайн: приложение отображает ранее закэшированных котиков
+* Реализовано сохранение лайков между выходами из приложения
+* Отсутствие сети отображается картинкой в левом верхнем углу экрана
+* При пропадании сети также отображается Snackbar
 
 ### Интерфейс приложения
 #### iOS, светлая тема
@@ -28,6 +33,8 @@
 <img src="./images/image-19.png" width="200"/>
 <img src="./images/image-20.png" width="200"/>
 <img src="./images/image-21.png" width="200"/>
+<img src="./images/image-27.PNG" width="200">
+<img src="./images/image-28.PNG" width="200">
 
 #### iOS, темная тема
 <img src="./images/image-3.png" width="200"/>
@@ -36,6 +43,7 @@
 <img src="./images/image-22.png" width="200"/>
 <img src="./images/image-23.png" width="200"/>
 <img src="./images/image-24.png" width="200"/>
+<img src="./images/image-32.PNG" width="200"/>
 
 #### android, светлая тема
 <img src="./images/image-6.png" width="200"/>
@@ -44,6 +52,8 @@
 <img src="./images/image-15.png" width="200"/>
 <img src="./images/image-16.png" width="200"/>
 <img src="./images/image-26.png" width="200"/>
+<img src="./images/image-30.png" width="200"/>
+<img src="./images/image-29.png" width="200"/>
 
 #### android, темная тема
 <img src="./images/image-10.png" width="200"/>
@@ -52,6 +62,7 @@
 <img src="./images/image-17.png" width="200"/>
 <img src="./images/image-18.png" width="200"/>
 <img src="./images/image-25.png" width="200"/>
+<img src="./images/image-31.png" width="200"/>
 
 #### открытые википедии
 <img src="./images/image-14.png" width="200"/>

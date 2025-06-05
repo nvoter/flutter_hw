@@ -17,4 +17,10 @@ class Cat {
       breed: breed,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'url': imageUrl,
+    'breeds': [breed.toJson()],
+  };
 }
