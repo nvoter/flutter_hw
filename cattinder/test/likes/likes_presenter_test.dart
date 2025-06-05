@@ -8,6 +8,7 @@ import 'package:hw1/models/cat.dart';
 import 'package:hw1/models/breed.dart';
 
 class _MockInteractor extends Mock implements LikesInteractor {}
+
 class _MockView extends Mock implements LikesView {}
 
 void main() {
@@ -25,7 +26,7 @@ void main() {
     wikipediaUrl: '',
     dogFriendly: 0,
   );
-  final cat   = Cat(id: 'c2', imageUrl: 'url', breed: breed);
+  final cat = Cat(id: 'c2', imageUrl: 'url', breed: breed);
   final liked = LikedCat(cat: cat, likeDate: DateTime.now());
 
   setUpAll(() {

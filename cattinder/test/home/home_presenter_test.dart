@@ -7,6 +7,7 @@ import 'package:hw1/models/cat.dart';
 import 'package:hw1/models/breed.dart';
 
 class _MockInteractor extends Mock implements HomeInteractor {}
+
 class _MockView extends Mock implements HomeView {}
 
 void main() {
@@ -33,8 +34,9 @@ void main() {
   setUp(() {
     interactor = _MockInteractor();
     view = _MockView();
-    when(() => interactor.watchLikesCount())
-        .thenAnswer((_) => const Stream<int>.empty());
+    when(
+      () => interactor.watchLikesCount(),
+    ).thenAnswer((_) => const Stream<int>.empty());
     presenter = HomePresenter(interactor, view);
   });
 
